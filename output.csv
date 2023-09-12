@@ -1,0 +1,5 @@
+#TYPE System.Management.Automation.PSCustomObject
+"machineID","machineName","machineTags"
+"ec44fd17-a8f3-46e5-9982-358e5d41c12b","wg-win10-c1","Addtional-Tag1, Dept-B"
+"d5a66df1-a4b7-4342-80fd-61df4cfcafbb","testmachine1","evaluation"
+"a773141c-ff24-4568-97f3-0d15cd97535f","wg-win10-c2",""
