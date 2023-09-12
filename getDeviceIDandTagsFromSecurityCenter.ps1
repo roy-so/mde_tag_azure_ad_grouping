@@ -10,9 +10,9 @@ $appSecret = "IWD8Q~bWFwkg4-JXEz4t7Upk4FTRLBaYf091waOy"  #paste your App Key
 $resourceAppIdUri = 'https://api.securitycenter.microsoft.com'
 $oAuthUri = "https://login.microsoftonline.com/$tenantId/oauth2/token"
 $authBody = [Ordered] @{
-   resource = “$resourceAppIdUri”
-    client_id = “$appId”
-    client_secret = “$appSecret”
+    resource = "$resourceAppIdUri"
+    client_id = "$appId"
+    client_secret = "$appSecret"
     grant_type = "client_credentials"
     }
 
@@ -30,7 +30,7 @@ $url = "https://api.securitycenter.windows.com/api/machines"
 $webResponse = Invoke-RestMethod -Method Get -Uri $url -Headers $headers -ErrorAction Stop
 
 # if aaDeviceID is null, skip it, and out the informatoin needed to CSV
-$Output = $webResponse.value | Where-Object {$_.aadDeviceID -ne $null} | Select-Object aadDeviceId, computerDnsName, machineTags | ForEach-Object { 
+$output = $webResponse.value | Where-Object {$_.aadDeviceID -ne $null} | Select-Object aadDeviceId, computerDnsName, machineTags | ForEach-Object { 
     [PSCustomObject]@{
         "machineID" = $_.aadDeviceId
         "machineName" = $_.computerDnsName
@@ -39,7 +39,7 @@ $Output = $webResponse.value | Where-Object {$_.aadDeviceID -ne $null} | Select-
 }
 
 # Define the output file location
-$Output | Export-csv -Path .\mde\output.csv
+$output | Export-csv -Path .\mde\output.csv
 
 Write-Host "ESV Exported."
 

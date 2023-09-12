@@ -10,9 +10,9 @@ $appSecret = "IWD8Q~bWFwkg4-JXEz4t7Upk4FTRLBaYf091waOy"  #paste your App Key
 $resourceAppIdUri = 'https://api.securitycenter.microsoft.com'
 $oAuthUri = "https://login.microsoftonline.com/$tenantId/oauth2/token"
 $authBody = [Ordered] @{
-   resource = “$resourceAppIdUri”
-    client_id = “$appId”
-    client_secret = “$appSecret”
+    resource = "$resourceAppIdUri"
+    client_id = "$appId"
+    client_secret = "$appSecret"
     grant_type = "client_credentials"
     }
 
@@ -42,9 +42,6 @@ $Output = $webResponse.value | Where-Object {$_.aadDeviceID -ne $null} | Select-
 $Output | Export-csv -Path .\output.csv
 
 Write-Host "ESV Exported."
-echo $Output
-pwd
-dir
 
 
 # clean up all variables
